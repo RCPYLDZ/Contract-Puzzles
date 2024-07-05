@@ -1,5 +1,6 @@
 const { loadFixture } = require('@nomicfoundation/hardhat-network-helpers');
 const { assert } = require('chai');
+const { ethers} = require('hardhat');
 
 describe('Game2', function () {
   async function deployContractAndSetVariables() {
@@ -13,7 +14,10 @@ describe('Game2', function () {
     const { game } = await loadFixture(deployContractAndSetVariables);
 
     // press all the right switches to win this stage
-
+    // switchOn[20],switchOn[47],switchOn[212], win()
+    await game.switchOn(20);
+    await game.switchOn(47);
+    await game.switchOn(212);
     await game.win();
 
     // leave this assertion as-is
